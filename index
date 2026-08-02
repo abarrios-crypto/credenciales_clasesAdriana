@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Credencial Virtual - UAS</title>
+  <style>
+    /* ESTILOS BOTÁNICOS CÁLIDOS (Dusty Rose, Sage Green y Champagne Gold) */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: #2d3e33; /* Fondo verde bosque tenue */
+      margin: 0;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .portal-credencial {
+      width: 100%;
+      max-width: 420px;
+      background: #FAF8F5; /* Tono crema suave */
+      padding: 24px;
+      border-radius: 20px;
+      border: 2px solid #C4A47C; /* Champagne Gold */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      color: #2D3E33;
+    }
+
+    .portal-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .portal-header h2 {
+      margin: 0 0 6px 0;
+      font-size: 22px;
+      color: #2D3E33;
+    }
+
+    .portal-header p {
+      margin: 0;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .busqueda-container {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .busqueda-container input {
+      flex: 1;
+      padding: 12px 14px;
+      border: 1px solid #C4A47C;
+      border-radius: 12px;
+      font-size: 14px;
+      outline: none;
+      background: #FFF;
+      color: #333;
+    }
+
+    .btn-buscar {
+      background-color: #2D3E33;
+      color: white;
+      border: none;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-buscar:hover {
+      background-color: #3b5243;
+    }
+
+    .oculto {
+      display: none !important;
+    }
+
+    /* TARJETA DE CREDENCIAL */
+    .credencial-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .credencial-card {
+      width: 100%;
+      height: 220px;
+      background: #FFFFFF;
+      border: 2.5px solid #C4A47C;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+
+    .card-top-bar {
+      background-color: #2D3E33;
+      color: #FFF;
+      padding: 8px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .card-body {
+      display: flex;
+      padding: 14px;
+      justify-content: space-between;
+      align-items: center;
+      flex: 1;
+    }
+
+    .card-info {
+      flex: 1;
+      padding-right: 10px;
+    }
+
+    .card-info h3 {
+      margin: 0 0 8px 0;
+      font-size: 16px;
+      color: #2D3E33;
+      line-height: 1.2;
+    }
+
+    .detalle-txt {
+      margin: 4px 0;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .card-footer-tag {
+      margin-top: 12px;
+      font-size: 9px;
+      color: #888;
+      font-style: italic;
+    }
+
+    .card-qr-box img {
+      width: 105px;
+      height: 105px;
+      background: #FFF;
+      padding: 4px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .btn-imprimir {
+      background-color: #C4A47C;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      width: 100%;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn-imprimir:hover {
+      background-color: #b3916b;
+    }
+
+    .error-txt {
+      color: #d9534f;
+      font-size: 13px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* IMPRESIÓN (TAMAÑO TARJETA DE CRÉDITO: 8.5 x 5.4 cm) */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      
+      #tarjetaImprimible, #tarjetaImprimible * {
+        visibility: visible;
+      }
+
+      #tarjetaImprimible {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 85.6mm !important;
+        height: 54mm !important;
+        border: 1px solid #C4A47C !important;
+        box-shadow: none !important;
+        margin: 0 !important;
+        page-break-inside: avoid;
+      }
+
+      .btn-imprimir, .portal-header, .busqueda-container {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="portal-credencial">
+    <div class="portal-header">
+      <h2>🪪 Credencial Digital UAS</h2>
+      <p>Ingresa tu matrícula para obtener tu credencial</p>
+    </div>
+
+    <div class="busqueda-container">
+      <input type="text" id="inputMatricula" placeholder="Ej. 20240001" autocomplete="off">
+      <button onclick="buscarCredencial()" class="btn-buscar">Buscar</button>
+    </div>
+
+    <!-- VISTA DE LA CREDENCIAL -->
+    <div id="credencialContainer" class="credencial-wrapper oculto">
+      <div class="credencial-card" id="tarjetaImprimible">
+        <div class="card-top-bar" id="cardHeader">
+          <span>UAS • CONTROL DE ASISTENCIA</span>
+          <span class="card-badge" id="cardBadge">✨ Válida</span>
+        </div>
+        
+        <div class="card-body">
+          <div class="card-info">
+            <h3 id="lblNombre">---</h3>
+            <p class="detalle-txt"><strong>Matrícula:</strong> <span id="lblMatricula">---</span></p>
+            <p class="detalle-txt"><strong>Materia:</strong> <span id="lblMateria">---</span></p>
+            <div class="card-footer-tag">Presenta este QR para tomar asistencia</div>
+          </div>
+
+          <div class="card-qr-box">
+            <img id="imgQR" src="" alt="Código QR Alumno">
+          </div>
+        </div>
+      </div>
+
+      <button onclick="window.print()" class="btn-imprimir">🖨️ Descargar / Imprimir Credencial</button>
+    </div>
+    
+    <p id="mensajeError" class="error-txt oculto">No encontramos ningún alumno registrado con esa matrícula.</p>
+  </div>
+
+  <script>
+    // ⚠️ REEMPLAZA ESTA URL CON LA DE TU WEB APP EN GOOGLE APPS SCRIPT
+    const URL_BACKEND = "TU_URL_DE_APPS_SCRIPT_AQUI";
+
+    // PALETA DE COLORES CÁLIDA POR MATERIA
+    const PALETA_MATERIAS = [
+      { bgHeader: '#2D3E33', borderCard: '#C4A47C', emoji: '🌿' }, // Verde Bosque / Dorado
+      { bgHeader: '#8B4513', borderCard: '#D2B48C', emoji: '📜' }, // Terracota / Beige
+      { bgHeader: '#3B5266', borderCard: '#9BB7D4', emoji: '📘' }, // Azul Pizarra / Plata
+      { bgHeader: '#7A3E5D', borderCard: '#E0C0D1', emoji: '🌸' }, // Rosa Polvo / Malva
+      { bgHeader: '#B85B35', borderCard: '#F5C564', emoji: '🍊' }, // Ámbar Cobre / Sol
+      { bgHeader: '#4A6B32', borderCard: '#A2C581', emoji: '🍃' }  // Verde Oliva / Hoja
+    ];
+
+    let listaAlumnos = [];
+
+    // Cargar alumnos desde el Apps Script automáticamente al abrir la página
+    async function cargarAlumnos() {
+      try {
+        let response = await fetch(URL_BACKEND + "?accion=obtenerReporte");
+        let data = await response.json();
+        if (Array.isArray(data)) {
+          listaAlumnos = data;
+        }
+      } catch (e) {
+        console.error("Error cargando alumnos:", e);
+      }
+    }
+
+    // Calcula de forma invariable un color fijo a partir del texto de la materia
+    function obtenerEstiloMateria(materia) {
+      let hash = 0;
+      for (let i = 0; i < materia.length; i++) {
+        hash = materia.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      let index = Math.abs(hash) % PALETA_MATERIAS.length;
+      return PALETA_MATERIAS[index];
+    }
+
+    function buscarCredencial() {
+      let mat = document.getElementById('inputMatricula').value.trim();
+      let contenedor = document.getElementById('credencialContainer');
+      let errorTxt = document.getElementById('mensajeError');
+
+      if (!mat) return;
+
+      let alumno = listaAlumnos.find(a => String(a.matricula).trim() === mat);
+
+      if (alumno) {
+        document.getElementById('lblNombre').innerText = alumno.nombre;
+        document.getElementById('lblMatricula').innerText = alumno.matricula;
+        document.getElementById('lblMateria').innerText = alumno.materia;
+
+        // Aplicar color personalizado de la materia
+        let estilo = obtenerEstiloMateria(alumno.materia);
+        document.getElementById('cardHeader').style.backgroundColor = estilo.bgHeader;
+        document.getElementById('tarjetaImprimible').style.borderColor = estilo.borderCard;
+        document.getElementById('cardBadge').innerText = estilo.emoji + " Válida";
+
+        // Generar QR
+        let urlQR = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(alumno.matricula);
+        document.getElementById('imgQR').src = urlQR;
+
+        contenedor.classList.remove('oculto');
+        errorTxt.classList.add('oculto');
+      } else {
+        contenedor.classList.add('oculto');
+        errorTxt.classList.remove('oculto');
+      }
+    }
+
+    // Iniciar carga al abrir
+    cargarAlumnos();
+  </script>
+</body>
+</html>
