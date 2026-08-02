@@ -216,7 +216,7 @@
   <div class="portal-credencial">
     <div class="portal-header">
       <h2>🪪 Credencial Digital UAS</h2>
-      <p>Ingresa tu matrícula para obtener tu credencial</p>
+      <p>Ingresa tu código para obtener tu credencial</p>
     </div>
 
     <div class="busqueda-container">
@@ -254,7 +254,7 @@
 
   <script>
     // ⚠️ REEMPLAZA ESTA URL CON LA DE TU WEB APP EN GOOGLE APPS SCRIPT
-    const URL_BACKEND = "TU_URL_DE_APPS_SCRIPT_AQUI";
+    const URL_BACKEND = "https://script.google.com/macros/s/AKfycbzzgskaZuX8AF7ne7zn0cWsx-lh6BNn9l8E5FLUd8KOoBDa_CDz0SKShc5eXcsa3GyH/exec";
 
     // PALETA DE COLORES CÁLIDA POR MATERIA
     const PALETA_MATERIAS = [
