@@ -5,31 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pase de Lista Digital • Mtra. Adriana A. Barrios Rodríguez</title>
   <style>
-    /* PALETA BOTÁNICA CÁLIDA Y REFINADA */
+    /* --------------------------------------------------
+       ESTILOS GENERALES Y PALETA DE COLOR
+    -------------------------------------------------- */
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
+    
     body {
       font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-      background-color: #2D3E33; /* Fondo verde bosque */
-      margin: 0;
-      padding: 20px 10px;
+      background-color: #1E2B22; /* Verde bosque profundo */
+      color: #2D3E33;
+      padding: 20px 12px;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      min-height: 100vh;
-      color: #2D3E33;
+      justify-content: center;
     }
 
+    /* CONTENEDOR DEL PORTAL */
     .portal-container {
       width: 100%;
-      max-width: 420px;
-      background: #FAF8F5; /* Dusty Rose / Crema */
-      padding: 24px 20px 16px 20px;
+      max-width: 410px;
+      background: #FAF8F5;
+      padding: 24px 20px;
       border-radius: 24px;
-      border: 2px solid #C4A47C; /* Champagne Gold */
-      box-shadow: 0 12px 35px rgba(0,0,0,0.25);
+      border: 1px solid #D4AF37;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       display: flex;
       flex-direction: column;
     }
@@ -40,56 +45,62 @@
     }
 
     .portal-header h2 {
-      margin: 0 0 4px 0;
-      font-size: 21px;
-      color: #2D3E33;
+      font-size: 20px;
+      font-weight: 700;
+      color: #1E2B22;
+      letter-spacing: -0.3px;
     }
 
     .portal-header p {
-      margin: 0;
       font-size: 13px;
       color: #666;
+      margin-top: 4px;
     }
 
-    /* FORMULARIO DE BÚSQUEDA Y FOTO */
+    /* FORMULARIO */
     .form-group {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .input-field {
-      padding: 13px 14px;
-      border: 1.5px solid #C4A47C;
+      padding: 13px 15px;
+      border: 1.5px solid #D4AF37;
       border-radius: 12px;
       font-size: 14px;
       outline: none;
-      background: #FFF;
+      background: #FFFFFF;
       color: #333;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: #1E2B22;
     }
 
     .file-upload-btn {
-      background: #EFE8DC;
-      border: 1.5px dashed #C4A47C;
+      background: #F2ECDF;
+      border: 1.5px dashed #C5A059;
       padding: 12px;
       border-radius: 12px;
       text-align: center;
       font-size: 13px;
       cursor: pointer;
-      color: #2D3E33;
+      color: #1E2B22;
       font-weight: 600;
-      transition: all 0.2s ease;
+      transition: all 0.2s;
     }
 
     .file-upload-btn:hover {
-      background: #e4dacb;
+      background: #E8DFCE;
     }
 
     .file-upload-btn.cargado {
-      background: #e1efe6;
+      background: #E2EFE7;
       border: 1.5px solid #2D3E33;
-      color: #1e3024;
+      color: #1E2B22;
     }
 
     #inputFoto {
@@ -97,92 +108,111 @@
     }
 
     .btn-generar {
-      background-color: #2D3E33;
-      color: white;
+      background: linear-gradient(135deg, #2D3E33 0%, #1E2B22 100%);
+      color: #FFFFFF;
       border: none;
-      padding: 13px;
+      padding: 14px;
       border-radius: 12px;
-      font-weight: bold;
-      font-size: 15px;
+      font-weight: 700;
+      font-size: 14px;
       cursor: pointer;
-      transition: background 0.2s;
+      box-shadow: 0 4px 12px rgba(30, 43, 34, 0.3);
+      transition: transform 0.1s, background 0.2s;
     }
 
-    .btn-generar:hover {
-      background-color: #3b5243;
+    .btn-generar:active {
+      transform: scale(0.98);
     }
 
     .oculto {
       display: none !important;
     }
 
-    /* 🪪 TARJETA VERTICAL DE ALTA DEFINICIÓN */
+    /* --------------------------------------------------
+       🪪 VISTA DE CREDENCIAL VIP (MODERNA / VANGUARDIA)
+    -------------------------------------------------- */
     .credencial-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 16px;
-      margin-bottom: 10px;
+      margin-top: 6px;
     }
 
     .credencial-card-v {
       width: 100%;
       max-width: 320px;
       background: #FFFFFF;
-      border: 2px solid #C4A47C;
       border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      border: 1px solid #D4AF37;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
       overflow: hidden;
       position: relative;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding-bottom: 14px;
-      background-image: radial-gradient(#2D3E33 0.4px, transparent 0.4px);
-      background-size: 10px 10px;
-      background-color: #FAF8F5;
+      background-color: #FAFAFA;
     }
 
-    /* Franja superior ancha con materia */
+    /* Franja Superior Dinámica */
     .card-top-banner {
       width: 100%;
-      background-color: #2D3E33;
+      background: #1E2B22;
       color: #FFFFFF;
-      padding: 16px 10px 20px 10px;
+      padding: 16px 14px 14px 14px;
       text-align: center;
       position: relative;
-      border-bottom: 3px solid #C4A47C;
+      border-bottom: 3px solid #D4AF37;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
 
-    .card-top-banner h3 {
-      margin: 0;
-      font-size: 15px;
-      letter-spacing: 0.5px;
+    .card-top-banner .badge-security {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      font-size: 8px;
+      letter-spacing: 1px;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 0.5px solid rgba(255, 255, 255, 0.3);
       text-transform: uppercase;
-      font-weight: 700;
+    }
+
+    .card-top-banner h3 {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      line-height: 1.3;
+      margin-top: 4px;
     }
 
     .card-top-banner span {
-      font-size: 10px;
-      opacity: 0.9;
+      font-size: 9.5px;
+      opacity: 0.85;
       display: block;
       margin-top: 3px;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      font-weight: 500;
     }
 
-    /* Fotografía del Alumno */
+    /* MARCO DE FOTOGRAFÍA RECTANGULAR ESTILO RETRATO */
+    .foto-container {
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+
     .foto-frame {
       width: 105px;
-      height: 105px;
-      border-radius: 50%;
-      border: 3px solid #C4A47C;
-      background: #FFF;
-      margin-top: -28px;
-      z-index: 2;
+      height: 125px; /* Proporción elegante 4:5 */
+      border-radius: 12px;
+      border: 2px solid #C5A059;
+      background: #FFFFFF;
       overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -194,165 +224,241 @@
       object-fit: cover;
     }
 
-    /* Datos del Estudiante */
+    /* DATOS DEL ESTUDIANTE */
     .card-body-v {
       text-align: center;
-      padding: 10px 16px 4px 16px;
+      padding: 4px 16px 4px 16px;
       width: 100%;
     }
 
     .student-name {
-      margin: 4px 0 6px 0;
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 800;
-      color: #2D3E33;
-      line-height: 1.2;
+      color: #1E2B22;
+      line-height: 1.25;
+      margin-bottom: 4px;
     }
 
     .data-row {
-      font-size: 14px;
+      font-size: 13px;
       color: #444;
-      margin: 4px 0;
+      margin: 2px 0;
     }
 
     .docente-tag {
-      font-size: 11px;
-      color: #5c4428;
+      font-size: 10.5px;
+      color: #4A3B22;
       font-weight: 700;
       margin-top: 8px;
-      background: #EFE8DC;
+      background: #F4EFE6;
       padding: 5px 12px;
-      border-radius: 20px;
+      border-radius: 50px;
       display: inline-block;
-      border: 1px solid #C4A47C;
+      border: 1px solid #D4AF37;
     }
 
-    /* QR y Sello de Seguridad */
-    .qr-security-box {
+    /* CONTENEDOR QR LÍMPIIDO */
+    .qr-clean-box {
+      margin-top: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      margin-top: 10px;
-      position: relative;
     }
 
-    .qr-security-box img.qr-code {
-      width: 125px;
-      height: 125px;
-      background: #FFF;
+    .qr-clean-box img.qr-code {
+      width: 115px;
+      height: 115px;
+      background: #FFFFFF;
       padding: 6px;
-      border: 1px solid #C4A47C;
+      border: 1px solid #E0D5C1;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    }
-
-    /* Sello Holográfico / Verificado */
-    .security-badge {
-      position: absolute;
-      bottom: -6px;
-      right: -15px;
-      background: linear-gradient(135deg, #C4A47C 0%, #e8d0aa 50%, #B3916B 100%);
-      color: #2D3E33;
-      font-size: 8px;
-      font-weight: 900;
-      padding: 4px 6px;
-      border-radius: 50%;
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      border: 1px solid #FFF;
-      text-transform: uppercase;
-      line-height: 1;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
     .barcode-sub {
       font-family: 'Courier New', Courier, monospace;
       font-size: 10px;
+      font-weight: 700;
       letter-spacing: 2px;
-      color: #666;
-      margin-top: 8px;
+      color: #777;
+      margin-top: 6px;
     }
 
+    /* FOOTER DENTRO DE LA CREDENCIAL IMPRESA */
     .card-footer-author {
-      font-size: 9px;
-      color: #777;
+      font-size: 8.5px;
+      color: #888;
       text-align: center;
-      margin-top: 8px;
-      border-top: 1px solid #E5DCCB;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-top: 1px solid #EFE8DC;
       padding-top: 6px;
       width: 88%;
     }
 
+    /* BOTÓN IMPRIMIR */
     .btn-imprimir {
-      background-color: #C4A47C;
-      color: white;
+      background: linear-gradient(135deg, #C5A059 0%, #B38E47 100%);
+      color: #FFFFFF;
       border: none;
-      padding: 12px 20px;
+      padding: 13px 20px;
       border-radius: 12px;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
       font-size: 14px;
       width: 100%;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+      box-shadow: 0 4px 12px rgba(197, 160, 89, 0.3);
+      transition: background 0.2s;
     }
 
     .btn-imprimir:hover {
-      background-color: #b3916b;
+      background: #b38e47;
     }
 
-    /* FOOTER DE LA INTERFAZ (IGUAL AL ESCÁNER) */
+    /* FOOTER DE LA INTERFAZ */
     .app-portal-footer {
-      margin-top: 15px;
+      margin-top: 18px;
       padding-top: 12px;
-      border-top: 1px solid #E5DCCB;
+      border-top: 1px solid #EAE3D2;
       text-align: center;
       font-size: 11px;
       color: #666;
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .app-portal-footer strong {
-      color: #2D3E33;
+      color: #1E2B22;
     }
 
     .error-txt {
-      color: #d9534f;
+      color: #D9534F;
       font-size: 13px;
       text-align: center;
       margin: 8px 0;
       font-weight: 600;
     }
 
-    /* 🖨️ MEDIDAS EXACTAS DE IMPRESIÓN (VERTICAL: 54mm x 85.6mm) */
+    /* --------------------------------------------------
+       🖨️ MEDIDAS DE IMPRESIÓN AJUSTADAS (54mm x 85.6mm)
+    -------------------------------------------------- */
+    @page {
+      size: auto;
+      margin: 0mm;
+    }
+
     @media print {
-      body * {
-        visibility: hidden;
+      body {
+        background: #FFFFFF !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        display: block !important;
       }
       
+      .portal-container {
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+
       #tarjetaImprimible, #tarjetaImprimible * {
-        visibility: visible;
+        visibility: visible !important;
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
       }
 
       #tarjetaImprimible {
-        position: absolute;
-        left: 0;
-        top: 0;
+        position: absolute !important;
+        left: 50% !important;
+        top: 10px !important;
+        transform: translateX(-50%) !important;
         width: 54mm !important;
         height: 85.6mm !important;
-        border: 1px solid #C4A47C !important;
+        border: 1.2px solid #C5A059 !important;
         box-shadow: none !important;
         margin: 0 !important;
-        border-radius: 8mm !important;
-        page-break-inside: avoid;
+        border-radius: 5mm !important;
+        overflow: hidden !important;
+        padding-bottom: 0 !important;
+        background: #FFFFFF !important;
       }
 
-      .btn-imprimir, .portal-header, .form-group, .file-upload-btn, .app-portal-footer {
+      .card-top-banner {
+        padding: 8px 4px 6px 4px !important;
+      }
+
+      .card-top-banner .badge-security {
+        display: none !important;
+      }
+
+      .card-top-banner h3 {
+        font-size: 9.5px !important;
+        line-height: 1.1 !important;
+      }
+
+      .card-top-banner span {
+        font-size: 6.5px !important;
+        margin-top: 1px !important;
+      }
+
+      .foto-container {
+        margin-top: 6px !important;
+        margin-bottom: 2px !important;
+      }
+
+      .foto-frame {
+        width: 52px !important;
+        height: 64px !important;
+        border-width: 1.5px !important;
+        border-radius: 6px !important;
+      }
+
+      .card-body-v {
+        padding: 2px 4px !important;
+      }
+
+      .student-name {
+        font-size: 11px !important;
+        margin-bottom: 1px !important;
+      }
+
+      .data-row {
+        font-size: 8.5px !important;
+        margin: 1px 0 !important;
+      }
+
+      .docente-tag {
+        font-size: 7px !important;
+        padding: 2px 6px !important;
+        margin-top: 3px !important;
+      }
+
+      .qr-clean-box {
+        margin-top: 4px !important;
+      }
+
+      .qr-clean-box img.qr-code {
+        width: 68px !important;
+        height: 68px !important;
+        padding: 2px !important;
+        border-radius: 6px !important;
+      }
+
+      .barcode-sub {
+        font-size: 7px !important;
+        margin-top: 2px !important;
+      }
+
+      .card-footer-author {
+        font-size: 6px !important;
+        margin-top: 4px !important;
+        margin-bottom: 4px !important;
+        padding-top: 2px !important;
+      }
+
+      .btn-imprimir, .portal-header, .form-group, .file-upload-btn, .app-portal-footer, .error-txt {
         display: none !important;
       }
     }
@@ -384,33 +490,34 @@
     <div id="credencialContainer" class="credencial-wrapper oculto">
       <div class="credencial-card-v" id="tarjetaImprimible">
         
-        <!-- Franja ancha de materia -->
+        <!-- Banner superior con distintivo de seguridad -->
         <div class="card-top-banner" id="cardBanner">
+          <span class="badge-security">VERIFICADO</span>
           <h3 id="lblMateriaBanner">MATERIA</h3>
           <span>PASE DE ASISTENCIA</span>
         </div>
 
-        <!-- Foto -->
-        <div class="foto-frame">
-          <img id="imgFotoEstudiante" src="" alt="Foto Alumno">
+        <!-- Fotografía Rectangular Estilo Retrato -->
+        <div class="foto-container">
+          <div class="foto-frame">
+            <img id="imgFotoEstudiante" src="" alt="Foto Alumno">
+          </div>
         </div>
 
-        <!-- Datos -->
+        <!-- Datos del Estudiante -->
         <div class="card-body-v">
           <div class="student-name" id="lblNombre">Nombre del Alumno</div>
           <div class="data-row"><strong>Matrícula:</strong> <span id="lblMatricula">000000</span></div>
           <div class="docente-tag">Docente: Mtra. Adriana A. Barrios Rodríguez</div>
         </div>
 
-        <!-- QR + Sello de Seguridad -->
-        <div class="qr-security-box">
+        <!-- Código QR Completo y Limpio -->
+        <div class="qr-clean-box">
           <img id="imgQR" class="qr-code" src="" alt="Código QR">
-          <div class="security-badge" id="cardBadge">SELLO<br>OK</div>
+          <div class="barcode-sub" id="lblCodigoPase">PASE-0000</div>
         </div>
 
-        <div class="barcode-sub" id="lblCodigoPase">PASE-0000</div>
-
-        <!-- Footer Credencial impresa -->
+        <!-- Footer credencial -->
         <div class="card-footer-author">
           Uso interno de asistencia • Mtra. Adriana A. Barrios Rodríguez
         </div>
@@ -419,7 +526,7 @@
       <button onclick="window.print()" class="btn-imprimir">🖨️ Descargar / Imprimir Credencial</button>
     </div>
 
-    <!-- FOOTER HOMOLOGADO CON LA APP DE ESCANEO -->
+    <!-- FOOTER HOMOLOGADO CON APP DE ESCANEO -->
     <div class="app-portal-footer">
       Control de Asistencia Digital<br>
       Desarrollado por <strong>Mtra. Adriana A. Barrios Rodríguez</strong>
@@ -427,23 +534,22 @@
   </div>
 
   <script>
-    // ⚠️ ASEGÚRATE DE PONER AQUÍ LA URL DE TU WEB APP EN GOOGLE APPS SCRIPT
+    // ⚠️ REEMPLAZA CON LA URL DE TU WEB APP EN GOOGLE APPS SCRIPT
     const URL_BACKEND = "https://script.google.com/macros/s/AKfycbzzgskaZuX8AF7ne7zn0cWsx-lh6BNn9l8E5FLUd8KOoBDa_CDz0SKShc5eXcsa3GyH/exec";
 
-    // PALETA DE COLORES BOTÁNICOS POR MATERIA
+    // PALETA DE COLORES EJECUTIVOS Y BOTÁNICOS POR MATERIA
     const PALETA_MATERIAS = [
-      { bgHeader: '#2D3E33', borderCard: '#C4A47C', emoji: '🌿' }, // Verde Bosque / Dorado
-      { bgHeader: '#8B4513', borderCard: '#D2B48C', emoji: '📜' }, // Terracota / Beige
-      { bgHeader: '#3B5266', borderCard: '#9BB7D4', emoji: '📘' }, // Azul Pizarra / Plata
-      { bgHeader: '#7A3E5D', borderCard: '#E0C0D1', emoji: '🌸' }, // Rosa Polvo / Malva
-      { bgHeader: '#B85B35', borderCard: '#F5C564', emoji: '🍊' }, // Ámbar Cobre / Sol
-      { bgHeader: '#4A6B32', borderCard: '#A2C581', emoji: '🍃' }  // Verde Oliva / Hoja
+      { bgHeader: '#1E2B22', borderCard: '#C5A059' }, // Verde Bosque / Oro
+      { bgHeader: '#4A2511', borderCard: '#D4AF37' }, // Terracota Profundo / Dorado
+      { bgHeader: '#1A2E40', borderCard: '#8FAECF' }, // Azul Noche / Plata
+      { bgHeader: '#4A1C33', borderCard: '#E0B0C8' }, // Vino Borgoña / Rosé
+      { bgHeader: '#7A3B14', borderCard: '#F5C564' }, // Cobre Cálido / Ámbar
+      { bgHeader: '#2B4222', borderCard: '#A3C995' }  // Verde Oliva / Hoja
     ];
 
     let listaAlumnos = [];
     let fotoCargadaBase64 = null;
 
-    // Cargar lista de alumnos desde Google Sheets
     async function cargarAlumnos() {
       try {
         let response = await fetch(URL_BACKEND + "?accion=obtenerReporte");
@@ -456,7 +562,6 @@
       }
     }
 
-    // Procesar foto subida por el usuario
     function procesarFoto(event) {
       const file = event.target.files[0];
       if (file) {
@@ -472,7 +577,6 @@
       }
     }
 
-    // Calcular color fijo según el texto de la materia
     function obtenerEstiloMateria(materia) {
       let hash = 0;
       for (let i = 0; i < materia.length; i++) {
@@ -496,21 +600,18 @@
       let mat = document.getElementById('inputMatricula').value.trim();
       let contenedor = document.getElementById('credencialContainer');
 
-      // 1. Validar Matrícula
       if (!mat) {
         mostrarError("Por favor ingresa tu matrícula.");
         contenedor.classList.add('oculto');
         return;
       }
 
-      // 2. Validar Foto OBLIGATORIA
       if (!fotoCargadaBase64) {
-        mostrarError("⚠️ Es obligatorio adjuntar tu foto de perfil para poder generar la credencial.");
+        mostrarError("⚠️ Es obligatorio adjuntar tu foto de perfil para generar la credencial.");
         contenedor.classList.add('oculto');
         return;
       }
 
-      // 3. Buscar Alumno en la lista
       let alumno = listaAlumnos.find(a => String(a.matricula).trim() === mat);
 
       if (alumno) {
@@ -522,17 +623,14 @@
         document.getElementById('lblCodigoPase').innerText = "PASE-" + alumno.matricula;
         document.getElementById('imgFotoEstudiante').src = fotoCargadaBase64;
 
-        // Aplicar color dinámico de materia
         let estilo = obtenerEstiloMateria(alumno.materia);
         let banner = document.getElementById('cardBanner');
         let tarjeta = document.getElementById('tarjetaImprimible');
 
         banner.style.backgroundColor = estilo.bgHeader;
         tarjeta.style.borderColor = estilo.borderCard;
-        document.getElementById('cardBadge').innerText = estilo.emoji + "\nOK";
 
-        // Generar QR de lectura rápida
-        let urlQR = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + encodeURIComponent(alumno.matricula);
+        let urlQR = "https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=" + encodeURIComponent(alumno.matricula);
         document.getElementById('imgQR').src = urlQR;
 
         contenedor.classList.remove('oculto');
@@ -542,7 +640,6 @@
       }
     }
 
-    // Carga inicial al entrar a la página
     cargarAlumnos();
   </script>
 </body>
